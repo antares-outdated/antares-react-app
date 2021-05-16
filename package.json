@@ -2,22 +2,20 @@
   "name": "antares-react-app",
   "version": "1.0.0",
   "description": "My React App build",
-  "main": "index.js",
   "repository": "https://github.com/mariaberestovaya/antares-react-app",
   "author": "mariaverestovaya <rainbowdeity69@gmail.com>",
-  "license": "MIT",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "start": "webpack serve --mode development --open"
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "start": "cross-env NODE_ENV=development webpack serve --mode development  --open"
   },
-  "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",

@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
-const isProd = !isDev;
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -16,6 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".json"],
+    alias: {
+      "@models": path.resolve(__dirname, "src/models"),
+    },
   },
   devServer: {
     port: 3000,
@@ -38,22 +40,22 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
-      },
-      {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
           },
         },
       },
