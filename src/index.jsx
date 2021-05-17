@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { render } from "react-dom";
 
 import "./styles/styles.css";
-// import Logo
 
-const App = () => <div>React App</div>;
+const App = () => (
+  <Fragment>
+    <h1>React App</h1>
+    <p>Antares</p>
+  </Fragment>
+);
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById("root"));
