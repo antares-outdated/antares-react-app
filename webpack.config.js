@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
@@ -24,10 +25,17 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      title: "Webpack",
-      template: "./index.html",
+      template: path.resolve(__dirname, "public/index.html"),
     }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public/moon.ico"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
