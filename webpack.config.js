@@ -8,13 +8,13 @@ const isDev = process.env.NODE_ENV === "development";
 module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
-  entry: "./index.jsx",
+  entry: "./index.tsx",
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: [".js", ".json"],
+    extensions: [".tsx", ".ts", ".js", ".json"],
     alias: {
       "@models": path.resolve(__dirname, "src/models"),
     },
@@ -39,6 +39,11 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
