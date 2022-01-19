@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import "./styles/styles.css";
 
 const App = () => (
-  <Fragment></Fragment>
+  <Fragment>Hello</Fragment>
 );
 
 render(<App />, document.getElementById("root"));
